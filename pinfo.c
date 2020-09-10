@@ -11,22 +11,24 @@ void pinfo(char** input)
         char status[3];
         int faltu;
         char faltu2[1000];
-        char mem[1000];
+        //char mem[1000];
         fscanf(file, "%d" "%s" "%s" ,&faltu,faltu2 ,status);
-        int i=0;
-        while(i<20)
-        {
-            fscanf(file,"%s",mem);
-            i++;
-        }
         fclose(file);
+
+        int mem;
+        char filep[1500];
+		sprintf(filep,"/proc/%d/statm",getpid());
+		FILE *f1 = fopen(filep,"r");
+		fscanf(f1,"%d",&mem);
+		//printf("memory -- %d\n",mem);
+		fclose(f1);
 
         char buf[1000];
         readlink("/proc/self/exe", buf, sizeof(buf));
 
         printf("pid-- %d\n", getpid());
         printf("Process Status -- %s\n",status);
-        printf("memory -- %s\n",mem);
+        printf("memory -- %d\n",mem);
         if(strstr(buf,basedir)==NULL)
         {
             printf("Executable path -- %s\n", buf);
@@ -60,15 +62,18 @@ void pinfo(char** input)
         char status[3];
         int faltu;
         char faltu2[1000];
-        char mem[1000];
+     //   char mem[1000];
         fscanf(file, "%d" "%s" "%s" ,&faltu,faltu2 ,status);
         int i=0;
-        while(i<20)
-        {
-            fscanf(file,"%s",mem);
-            i++;
-        }
         fclose(file);
+
+        int mem;
+        char filep[1500];
+		sprintf(filep,"/proc/%s/statm",input[1]);
+		FILE *f1 = fopen(filep,"r");
+		fscanf(f1,"%d",&mem);
+		//printf("memory -- %d\n",mem);
+		fclose(f1);
 
         char buf[1000];
         char path2[] = "/proc/";
@@ -78,7 +83,7 @@ void pinfo(char** input)
 
         printf("pid-- %s\n", input[1]);
         printf("Process Status -- %s\n",status);
-        printf("memory -- %s\n",mem);
+        printf("memory -- %d\n",mem);
         if(strstr(buf,basedir)==NULL)
         {
             printf("Executable path -- %s\n", buf);
