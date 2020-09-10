@@ -4,7 +4,7 @@
 The main objective is to mimic the behavior of the shell in the linux terminal.
 
 ## Running the shell
-- Compile the entire program using the make command and run the executable 
+Compile the entire program using the make command and run the executable 
 - > makefile 
 - > ./a.out
 
