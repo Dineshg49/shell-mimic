@@ -8,8 +8,9 @@ Compile the entire program using the make command and run the executable
 - > makefile 
 - > ./a.out
 
+To exit the shell use the quit command or press Ctlrl + D .
 ## IMPLEMENTATION
-The code is written in the modular form . Almost each function has its own code file and the header file.
+The code is written in the modular form . Almost each function has its own code file and the header file. 
 
 ### The different files and their roles :
 - #### main.c
@@ -48,5 +49,40 @@ This function displays the content of the directory . It supports flags like -a 
 - #### pinfo.c
 The commands prints the information regarding the current shell process or ant pid specified process.
 
-- #### sys.h
-This commands uses fork and execvp to create child process of the system commands given by the user . It also displays the appropriate message when a background process starts and terminates.
+- #### bg.c
+This file has two function bgh and bg . The bgh  function runs given process in background while the bg function sets the status of the program running to stopped to runnning in the background.
+
+ - #### delete.c
+ This function deletes the process from the jobs list by taking input of the pid of the process.
+
+ - #### fg.c
+ The file contains two functions fgh and fg .The fgh function runs the given function in foreground while the  fg function pushes the background process given to foreground.
+
+ - #### gopipe.c
+ The gopipe function separates the pipe separated commands .
+
+ - #### handler.c 
+ It contains all the handler functions for when the child process stops and exits.
+
+ - #### jobs.c
+ It lists out all the background jobs along with their pid and the status.
+
+ - #### kjob.c
+ It changes the state of the given process based on the signal provided.
+
+ - #### overkill.c
+ It kills all the process in the background.
+
+ - #### pipe.c
+ It runs the pipe separated commands in different pipe arrays and is mainly responsible for pipes functionality.
+
+ - #### redirection.c
+ This function ensures the redirection between the files mentioned in the command.
+
+ - #### set.c
+ This contains functions of setenv and unsetenv.
+
+ - #### signals.c
+ This contains the all the signal handlers for keyboard interrupts like (ctrl + z) and (ctrl + c).
+  
+ 

@@ -1,22 +1,16 @@
 #include "headers.h"
 #include "input.h"
-
-char *input()
+#include"global_var.h"
+char* input()
 {
-    int bytes_read;
-    ssize_t size = 0;
-    char *string;
-
-    bytes_read = getline (&string, &size, stdin);
-    if (bytes_read == -1)
+    char *str; 
+    size_t bufsize = 10000, characters;
+    str = (char *)malloc(bufsize * sizeof(char));
+    getline(&str,&bufsize,stdin);
+    if(strcmp(str,"\0")==0)
     {
-        puts ("ERROR!");
+      printf("\n");
+      chill=0;
     }
-    else
-    {
-        // puts(string);
-        // printf("main ninja hattori\n");
-        return string;
-    }
-    
+    return str;
 }

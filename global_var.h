@@ -1,0 +1,21 @@
+int chill;
+int mainshellpid;
+int jobcnt;
+int child;
+int fd1,fd2,fd_open,fd_write;
+int mypipe1[2],mypipe2[2];
+typedef struct node{
+    char name[1000];
+    pid_t id;
+}node;
+int czz;
+node job[10000];
+char current_fg[1000];
+int current_fg_pid;
+int current_bg_pid;
+pid_t fg_pid;
+int foreground;
+char command1[10000];
+char prev[1000];
+char current[1000];
+int dirflag;

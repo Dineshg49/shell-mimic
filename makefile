@@ -1,2 +1,2 @@
 main:
-	gcc -g main.c prompt.c cd.c initial.c input.c indiv.c exec.c divide_arg.c pwd.c echo.c ls.c sys.c pinfo.c
+	gcc -g gopipe.c redirection.c overkill.c kjob.c jobs.c set.c main.c prompt.c cd.c initial.c input.c indiv.c exec.c divide_arg.c pwd.c echo.c ls.c pinfo.c bg.c fg.c handler.c delete.c signals.c pipe.c

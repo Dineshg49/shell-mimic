@@ -1,8 +1,12 @@
 #include "headers.h"
 #include "ls.h"
 
+#define blue  "\x1b[34m"
+#define again "\x1b[0m"
+
 void ls(char** input)
 {
+   // printf("ls enter\n");
     int a=0,l=0,cnt=0;
     struct dirent *name;
     struct stat directory;
@@ -30,6 +34,7 @@ void ls(char** input)
     if(cnt==0)
     {
         DIR *dir = opendir(".");
+        printf(blue ".\n" again);
         while((name = readdir(dir))!=NULL)
         {
             stat(name->d_name, &directory);
@@ -103,7 +108,12 @@ void ls(char** input)
             if(strcmp(input[i],"-l")!=0 && strcmp(input[i],"-a")!=0 && strcmp(input[i],"-la")!=0 && strcmp(input[i],"-al")!=0)
             {
                 DIR *dir = opendir(input[i]);
-                printf("%s\n",input[i]);
+                if(dir==NULL)
+                {
+                    printf("No such file or directory");
+                    continue;
+                }
+                printf(blue "%s\n" again,input[i]);
                 while((name = readdir(dir))!=NULL)
                 {
                 //   printf("ninja");

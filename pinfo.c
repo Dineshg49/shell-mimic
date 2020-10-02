@@ -4,6 +4,7 @@
 
 void pinfo(char** input)
 {
+   // printf("called pinfo \n");
     if(input[1]==NULL)
     {
         char path[] = "/proc/self/stat";
@@ -17,7 +18,7 @@ void pinfo(char** input)
 
         int mem;
         char filep[1500];
-		sprintf(filep,"/proc/%d/statm",getpid());
+		sprintf(filep,"/proc/self/statm");
 		FILE *f1 = fopen(filep,"r");
 		fscanf(f1,"%d",&mem);
 		//printf("memory -- %d\n",mem);
@@ -59,6 +60,11 @@ void pinfo(char** input)
         strcat(path,input[1]);
         strcat(path,"/stat");
         FILE* file = fopen(path,"r");
+        if(file==NULL)
+        {
+            printf("No such process with pid %s\n",input[1]);
+            return ;
+        }
         char status[3];
         int faltu;
         char faltu2[1000];
